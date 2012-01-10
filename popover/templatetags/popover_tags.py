@@ -5,9 +5,7 @@ from popover.models import Popover
 register = template.Library()
 
 @register.inclusion_tag('popover/popover_link.html')
-def popover(slug, content=None, position="right"):
-    if content:
-        return {'popover':{'title': slug,'content': content},'STATIC_URL':settings.STATIC_URL, "position": position}
+def popover(slug, position="right"):
     try:
         popover = Popover.objects.get(slug=slug)
     except:
