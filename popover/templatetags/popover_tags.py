@@ -8,5 +8,8 @@ register = template.Library()
 def popover(slug, content=None):
     if content:
         return {'popover':{'title': slug,'content': content},'STATIC_URL':settings.STATIC_URL}
-    popover = Popover.objects.get(slug=slug)
+    try:
+        popover = Popover.objects.get(slug=slug)
+    except:
+        popover = None
     return { 'popover': popover,'STATIC_URL':settings.STATIC_URL }
