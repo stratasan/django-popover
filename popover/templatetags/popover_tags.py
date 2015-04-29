@@ -1,5 +1,6 @@
 from django import template
 from django.conf import settings
+
 from popover.models import Popover
 
 register = template.Library()
@@ -10,4 +11,4 @@ def popover(slug, position="right"):
         popover = Popover.objects.get(slug=slug)
     except:
         popover = None
-    return { 'popover': popover,'STATIC_URL':settings.STATIC_URL, "position": position}
+    return {'popover': popover, 'STATIC_URL': settings.STATIC_URL, "position": position}
